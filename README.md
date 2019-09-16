@@ -51,9 +51,13 @@ Function 3: Volatility Smile Fitting
 ________________________________________________________________________________________________________________________________________
 
 
+The module aims to arrive at best fit for Volatility Surface based on user inputted Volatility/ Strike grid and returns a pointer to the array of calibrated parameters - Convexity, Skew and ATM Volatility. The module expresses smile surface (volatility as a function of Strike) as Volatility = Convexity * Strike^2 + Skew * Strike + ATM Volatility and then tries to arrive at best fit by changing the parameters Convexity, Skew, ATM Volatility by a fixed amount (tweak amount) in each iteration. Standard error is calculated for each iteration. The iteration for which the standard error is minimal is considered as the best fit for the volatility smile and can be used to quote implied volatility for any strike. Please note that module calibrates well within a close range of ATM Strike. However, for deep out of/ in the money strikes, the fit may not be that optimal meaning the quadratic behaviour breaks at higher strikes. However, the module does fairly well for close to ATM Strikes. 
+
+The user inputs Implied Volatility against various different strikes in the system. The module arrives at the best fit as per the above and prints the calibrated parameters on the console along with the standard error. The tweak amount in each iteration can be lowered to arrive at better fits however at the cost of increased computation time. Hence the user needs to balance between accuracy of the fit and compute time to arrive at best fit. 
 
 
 
+---------------------------------------------------End of Documentation-----------------------------------------------------------------
 
 
 
